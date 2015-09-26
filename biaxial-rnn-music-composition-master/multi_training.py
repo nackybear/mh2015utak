@@ -57,6 +57,7 @@ def trainPiece(model,pieces,epochs,start=0):
             # 
             xIpt, xOpt = map(numpy.array, getPieceSegment(pieces))
             # save midi file
+            # 以下の文の中のmodel.predict_fun(batch_len, 1, xIpt[0])のxIpt[0]の値を差し替えれば脳波データを入力として利用できる。
             noteStateMatrixToMidi(numpy.concatenate((numpy.expand_dims(xOpt[0], 0), model.predict_fun(batch_len, 1, xIpt[0])), axis=0),'output/sample{}'.format(i))
             # save learnd data
             pickle.dump(model.learned_config,open('output/params{}.p'.format(i), 'wb'))
