@@ -87,6 +87,12 @@ public class MainActivity extends AppCompatActivity {
             return true;    // no error dialog
         }
     };
+
+    /**
+     *
+     * @param path
+     *  "file:///android_asset"+filename
+     */
     public void playvideo(String path) {
         if (path != null) {
             videoplaying = true;
