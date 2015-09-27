@@ -1,0 +1,25 @@
+OSX Python set up memo 
+
+ーーーー
+midi file read/write
+$ sudo pip install python-midi
+
+ーーーー
+Jack osx (midi server)
+http://jackaudio.org/downloads/
+より、
+Binaries: Mixed 64/32 bit, 0.90 of JackOSX for Snow Leopard
+をダウンロード。dmgなので、マウント後、pkgを実行
+Applicationsフォルダに
+Jack
+フォルダができる。
+使うアプリは、
+JackPilot
+（USB キーボードなどをつないだ上で、起動して、スタートボタンを押す）
+
+ーーーー
+pythonで、midi のin/putのポートを開く
+$ pip install --pre python-rtmidi
+
+JackPilotで、Jackサーバーをスタートさせていないと、無限ループに陥る
+
