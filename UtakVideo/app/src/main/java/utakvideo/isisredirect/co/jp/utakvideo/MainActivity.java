@@ -4,6 +4,8 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.*;
+import android.net.Uri;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +13,9 @@ import android.view.View;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import java.io.File;
+import android.view.Window;
+import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = MainActivity.class.getSimpleName();
@@ -90,6 +95,16 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      *
+     */
+    public void playvideo() {
+        Log.d(TAG, "******** playvideo **********" + Environment.getExternalStorageDirectory());
+        videoView.setVideoPath(Environment.getExternalStorageDirectory() + "/myvideo2.mp4");
+        videoView.start();
+    }
+
+
+    /**
+     *
      * @param path
      *  "file:///android_asset"+filename
      */
@@ -98,9 +113,11 @@ public class MainActivity extends AppCompatActivity {
             videoplaying = true;
             Log.d(TAG, "playvideo " + path);
             if (playing) {
+
              }
             addVideoCallbacks();
             videoView.setVideoPath(path);
+            videoView.start();
         }
     }
 
@@ -114,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
         boolean saved = videoplaying;
         juststopvideo();
         if (playing) {
+
         }
     }
     private void juststopvideo() {
@@ -149,6 +167,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         videoView = (FullScreenVideoView) findViewById(R.id.video);
         videoplaying = false;
+
+        playvideo();
+
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
     }
 
     private void pushPlayButton() {
